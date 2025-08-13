@@ -26,12 +26,12 @@ toolchain_type(
 
 verilator_toolchain(
     name = "verilator_toolchain_impl",
-    systemc = "@verilator//:systemc",
-    verilator = "@verilator//:verilator_executable",
+    systemc = "@verilator_peter//:systemc",
+    verilator = "@verilator_peter//:verilator_executable",
     deps = [
-        "@zlib//:zlib",
-        "@verilator//:libverilator",
-        "@verilator//:svdpi",
+        "@verilator_peter//:libverilator",
+        "@verilator_peter//:svdpi",
+        "@zlib",
     ],
 )
 

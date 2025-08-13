@@ -13,7 +13,7 @@
 # limitations under the License.
 
 load("@rules_cc//cc:defs.bzl", "cc_test")
-load("//verilator:defs.bzl", "verilator_cc_library")
+load("//verilator_peter:defs.bzl", "verilator_cc_library")
 load("//verilog:defs.bzl", "verilog_library")
 
 package(

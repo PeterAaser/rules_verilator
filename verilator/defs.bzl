@@ -109,7 +109,7 @@ def _only_hpp(f):
     return None
 
 def _verilator_cc_library(ctx):
-    verilator_toolchain = ctx.toolchains["//verilator:toolchain_type"]
+    verilator_toolchain = ctx.toolchains["//verilator_peter:toolchain_type"]
 
     transitive_srcs = depset([], transitive = [ctx.attr.module[VerilogInfo].dag])
     all_srcs = [verilog_info_struct.srcs for verilog_info_struct in transitive_srcs.to_list()]
@@ -229,13 +229,13 @@ verilator_cc_library = rule(
             doc = "A tool for copying a tree of files",
             cfg = "exec",
             executable = True,
-            default = Label("//verilator/private:verilator_copy_tree"),
+            default = Label("//verilator_peter/private:verilator_copy_tree"),
         ),
         "_process_wrapper": attr.label(
             doc = "The Verilator process wrapper binary.",
             executable = True,
             cfg = "exec",
-            default = Label("//verilator/private:verilator_process_wrapper"),
+            default = Label("//verilator_peter/private:verilator_process_wrapper"),
         ),
     },
     provides = [
@@ -244,7 +244,7 @@ verilator_cc_library = rule(
     ],
     toolchains = [
         "@bazel_tools//tools/cpp:toolchain_type",
-        "//verilator:toolchain_type",
+        "//verilator_peter:toolchain_type",
     ],
     fragments = ["cpp"],
 )
@@ -266,7 +266,7 @@ verilator_toolchain = rule(
     implementation = _verilator_toolchain_impl,
     attrs = {
         "avoid_nondeterministic_outputs": attr.label(
-            default = Label("//verilator/settings:avoid_nondeterministic_outputs"),
+            default = Label("//verilator_peter/settings:avoid_nondeterministic_outputs"),
         ),
         "deps": attr.label_list(
             doc = "Global Verilator dependencies to link into downstream targets.",
